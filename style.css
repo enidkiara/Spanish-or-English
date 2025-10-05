@@ -43,6 +43,26 @@ h2 {
     justify-content: center;
     align-items: center;
     text-align: center;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: radial-gradient(white 4px, transparent 4px);
+    background-size: 50px 50px;
+    animation: moveDots 5s linear infinite;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+@keyframes moveDots {
+    0% {transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px);}
 }
 
 .instructions {
@@ -85,7 +105,7 @@ h2 {
 }
 
 #word-box {
-    font-size: 4rem;
+    font-size: 9rem;
     margin: 20px 0;
     
 }
@@ -101,9 +121,11 @@ h2 {
 }
 
 .buttons button, #next {
-    padding: 15px 30px;
+    background-color: #b3463a;
+    color: #e9a39c;
+    padding: 20px 40px;
     margin: 10px;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -116,5 +138,24 @@ h2 {
 
 #feedback {
     margin: 15px 0;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    min-height: 1.5em;
+}
+
+h3 {
+    color: #e9a39c;
+    font-size: 30px;
+}
+
+h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h3 a:hover {
+    text-decoration: underline;
+}
+#score {
+    font-size: 2.5rem;
+    color: black;
 }
