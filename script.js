@@ -19,6 +19,10 @@ function pickWord() {
     currentWord = words[randomIndex];
     wordBox.textContent = currentWord.text;
     feedback.textContent = " ";
+
+    wordBox.classList.remove("bounce");
+    void wordBox.offsetWidth;
+    wordBox.classList.add("bounce");
 }
 
 function checkAnswer(category) {
