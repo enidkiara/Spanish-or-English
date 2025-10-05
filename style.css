@@ -1,0 +1,39 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 50px;
+}
+
+.game {
+    max-width: 400px;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#word-box {
+    font-size: 2rem;
+    margin: 20px 0;
+}
+
+.buttons button, #next {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.buttons button:hover, #next:hover {
+    transform: scale(1.1);
+}
+
+#feedback {
+    margin: 15px 0;
+    font-size: 1.2rem;
+}
