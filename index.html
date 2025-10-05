@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <section class="header">
         <h1>Spanish or English?</h1>
         <br>
         <br>
@@ -28,6 +29,9 @@
                     <li>Keep playing to see how many words you can guess correctly!</li>
                 </ol>
             </div>
+        </section>
+        
+        <section class="game-page"></section>
         <div class="game">
             <div id="word-box">Loading...</div>
             <div class="buttons">
@@ -35,10 +39,12 @@
                 <button id="english">English</button>
                 <button id="both">Both</button>
             </div>
-            <div id="feedback"></div>
             <div id="score">Score: 0</div>
             <button id="next">Next Word</button>
+            <div id="feedback"></div>
         </div>
+    </section>
+
         <script src="script.js"></script>
     </body>
 </html>

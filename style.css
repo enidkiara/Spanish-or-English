@@ -1,14 +1,9 @@
 body {
     font-family: 'Nunito', sans-serif;
-    background: linear-gradient(to bottom, #b3463a, white),
-                repeating-radial-gradient(circle at 10% 10%, rgba(255,255,255,0.05), transparent 10px, transparent 20px);
     color: black;
     text-align: center;
-    padding: 50px;
-    display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
     height: 100vh;
     margin: 0;
     text-align: center;
@@ -37,8 +32,22 @@ h1 {
 h2 {
     font-size: 30px;
 }
+
+.header {
+    height: 100vh;
+    background-color: #b3463a;
+    padding: 40px 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .instructions {
     background-color: white;
+    color: black;
     padding: 15px 20px;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -53,16 +62,30 @@ h2 {
 .instructions li {
     margin-bottom: 8px;
 }
+
+.game-page {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
 .game {
-    max-width: 400px;
-    margin: auto;
+    width: 90%;
+    height: 90%;
+    margin: 0;
     background-color: white;
     padding: 50px;
     border-radius: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 #word-box {
-    font-size: 2rem;
+    font-size: 4rem;
     margin: 20px 0;
     
 }
@@ -78,9 +101,9 @@ h2 {
 }
 
 .buttons button, #next {
-    padding: 10px 20px;
-    margin: 5px;
-    font-size: 1rem;
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 1.5rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
