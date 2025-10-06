@@ -71,11 +71,19 @@ const words = [
 let score = 0;
 let wordsAnswered = 0;
 let currentWord;
+let streak = 0;
 
 const wordBox = document.getElementById("word-box");
 const feedback = document.getElementById("feedback");
 const scoreDisplay = document.getElementById("score");
 const nextButton = document.getElementById("next");
+const streakDisplay = document.createElement("div");
+streakDisplay.id = "streak";
+streakDisplay.style.fontSize = "1.5rem";
+streakDisplay.style.margin = "10px 0";
+streakDisplay.style.minHeight = "1.5rem"; 
+streakDisplay.textContent=" ";
+document.querySelector(".game").appendChild(streakDisplay)
 
 let answered = false;
 const totalWords = 20;
@@ -106,17 +114,24 @@ function checkAnswer(category) {
     wordsAnswered++;
 
     if (category === currentWord.category) {
-        feedback.textContent = "Correct!";
+        streak++;
         score++;
+        feedback.textContent = "Correct!";
         wordBox.style.color = "#5a8c60";
+
+        if(streak % 3 === 0) {
+            score += 2;
+            feedback.textContent += ` Combo! +2 points!`;
+        }
     } else {
+        streak = 0;
         feedback.textContent = `Nope! It's ${currentWord.category}.`;
         wordBox.style.color= "#9c4f4f";
     }
 
     let percentCorrect = ((score / wordsAnswered) * 100).toFixed(1);
-
     scoreDisplay.textContent = `Score: ${score}`;
+    streakDisplay.textContent = `Streak: ${streak}`;
 
     setTimeout(() => {
         wordBox.style.color = "#000000";
@@ -163,6 +178,5 @@ function restartGame() {
     pickWord();
 }
 restartButton.addEventListener("click", restartGame);
-
 
 pickWord();
