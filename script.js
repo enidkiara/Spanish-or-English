@@ -69,6 +69,7 @@ const words = [
 ];
 
 let score = 0;
+let wordsAnswered = 0;
 let currentWord;
 
 const wordBox = document.getElementById("word-box");
@@ -76,8 +77,10 @@ const feedback = document.getElementById("feedback");
 const scoreDisplay = document.getElementById("score");
 const nextButton = document.getElementById("next");
 
+let answered = false;
+const totalWords = 20;
+
 function pickWord() {
-    /*const randomIndex = Math.floor(Math.random() * words.length);*/
     let randomIndex;
     do {
         randomIndex = Math.floor(Math.random() * words.length);
@@ -87,25 +90,79 @@ function pickWord() {
     wordBox.textContent = currentWord.text;
     feedback.textContent = " ";
 
+    answered = false;
+    nextButton.disabled = true;
+
     wordBox.classList.remove("bounce");
     void wordBox.offsetWidth;
     wordBox.classList.add("bounce");
 }
 
 function checkAnswer(category) {
-    if(!currentWord) return;
+    if(!currentWord || answered) return;
+
+    answered = true;
+    nextButton.disabled = false;
+    wordsAnswered++;
+
     if (category === currentWord.category) {
         feedback.textContent = "Correct!";
         score++;
+        wordBox.style.color = "#5a8c60";
     } else {
         feedback.textContent = `Nope! It's ${currentWord.category}.`;
+        wordBox.style.color= "#9c4f4f";
     }
+
+    let percentCorrect = ((score / wordsAnswered) * 100).toFixed(1);
+
     scoreDisplay.textContent = `Score: ${score}`;
+
+    setTimeout(() => {
+        wordBox.style.color = "#000000";
+    }, 500);
+
+    updateProgress();
 }
+
+const progressBar = document.getElementById("progress-bar");
+
+function updateProgress() {
+    let progress = (wordsAnswered / totalWords) * 100;
+    progressBar.style.width = progress + "%";
+
+    if(wordsAnswered >= totalWords) {
+        feedback.textContent = `Finished! You got ${score} out of ${totalWords} words correct (${((score/totalWords)*100).toFixed(1)}%)`;
+        nextButton.disabled = true;
+    }
+}
+
+
 
 document.getElementById("spanish").addEventListener("click", () => checkAnswer("Spanish"));
 document.getElementById("english").addEventListener("click", () => checkAnswer("English"));
 document.getElementById("both").addEventListener("click", () => checkAnswer("Both"));
-nextButton.addEventListener("click", pickWord);
+nextButton.addEventListener("click", () => {
+    if (!answered) {
+        feedback.textContent = "Answer first!";
+        return;
+    }
+    pickWord();
+});
+
+const restartButton = document.getElementById("restart");
+
+function restartGame() {
+    score = 0;
+    wordsAnswered = 0;
+    answered = false;
+    scoreDisplay.textContent = `Score: 0`;
+    feedback.textContent = "";
+    progressBar.style.width = "0%";
+    nextButton.disabled = true;
+    pickWord();
+}
+restartButton.addEventListener("click", restartGame);
+
 
 pickWord();

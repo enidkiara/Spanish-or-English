@@ -102,6 +102,7 @@ h2 {
     justify-content: center;
     align-items: center;
     display: flex;
+    box-shadow: 0 0 20px rgba(179, 70, 58, 0.3);
 }
 
 #word-box {
@@ -134,6 +135,7 @@ h2 {
 
 .buttons button:hover, #next:hover {
     transform: scale(1.1);
+    background-color: #943a30;
 }
 
 #feedback {
@@ -158,4 +160,37 @@ h3 a:hover {
 #score {
     font-size: 2.5rem;
     color: black;
+}
+
+#progress-container {
+    width: 80%;
+    height: 20px;
+    background-color: #eee;
+    border-radius: 10px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #b3463a;
+    transition: width 0.5s ease;
+}
+
+#restart {
+    background-color: #b3463a;
+    color: #e9a39c;
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#restart:hover {
+    transform: scale(1.1);
+    background-color: #943a30;
 }
