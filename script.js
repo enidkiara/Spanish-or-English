@@ -97,6 +97,9 @@ timerDisplay.style.margin = "10px 0";
 timerDisplay.style.minHeight = "1.5rem";
 timerDisplay.textContent = " ";
 document.querySelector(".game").appendChild(timerDisplay);
+let highScore = localStorage.getItem("highscore") || 0;
+const highScoreDisplay = document.getElementById("highScore");
+highScoreDisplay.textContent = `High Score ${highScore}`;
 
 const timePerWord = 10;
 
@@ -205,6 +208,12 @@ function updateProgress() {
             ${englishStats}<br>
             ${bothStats}
             `;
+
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem("highScore", highScore);
+            feedback.innerHTML = `<div class="new-highscore">New High Score!</div><br>` + feedback.innerHTML;
+        }
     }
 }
 
