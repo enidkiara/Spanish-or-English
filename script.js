@@ -84,10 +84,42 @@ streakDisplay.style.margin = "10px 0";
 streakDisplay.style.minHeight = "1.5rem"; 
 streakDisplay.textContent=" ";
 document.querySelector(".game").appendChild(streakDisplay)
+let timer;
+const timerDisplay = document.createElement("div");
+timerDisplay.id = "timer";
+timerDisplay.style.fontSize = "1.5rem";
+timerDisplay.style.margin = "10px 0";
+timerDisplay.style.minHeight = "1.5rem";
+timerDisplay.textContent = " ";
+document.querySelector(".game").appendChild(timerDisplay);
+
+const timePerWord = 10;
+
+function startTimer() {
+    clearInterval(timer);
+    let timeLeft = timePerWord;
+    timerDisplay.textContent = `Time: ${timeLeft}`;
+
+    timer = setInterval(() => {
+        timeLeft--;
+        timerDisplay.textContent = `Time: ${timeLeft}`;
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            feedback.textContent = `Time's up! Its ${currentWord.category}.`;
+            wordBox.style.color = "#9c4f4f";
+            streak= 0;
+            streakDisplay.textContent = `Streak: ${streak}`;
+            nextButton.disabled = false;
+            answered = true;
+        }
+
+    }, 1000);
+}
+
 
 let answered = false;
-const totalWords = 20;
-
+const totalWords = 20; 
 function pickWord() {
     let randomIndex;
     do {
@@ -104,11 +136,14 @@ function pickWord() {
     wordBox.classList.remove("bounce");
     void wordBox.offsetWidth;
     wordBox.classList.add("bounce");
+
+    startTimer();
 }
 
 function checkAnswer(category) {
     if(!currentWord || answered) return;
 
+    clearInterval(timer)
     answered = true;
     nextButton.disabled = false;
     wordsAnswered++;
@@ -151,8 +186,6 @@ function updateProgress() {
         nextButton.disabled = true;
     }
 }
-
-
 
 document.getElementById("spanish").addEventListener("click", () => checkAnswer("Spanish"));
 document.getElementById("english").addEventListener("click", () => checkAnswer("English"));
