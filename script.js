@@ -72,6 +72,11 @@ let score = 0;
 let wordsAnswered = 0;
 let currentWord;
 let streak = 0;
+const categoryStats = {
+    Spanish: { correct: 0, total: 0 },
+    English: { correct: 0, total: 0 },
+    Both: { correct: 0, total: 0 }
+};
 
 const wordBox = document.getElementById("word-box");
 const feedback = document.getElementById("feedback");
@@ -147,16 +152,19 @@ function checkAnswer(category) {
     answered = true;
     nextButton.disabled = false;
     wordsAnswered++;
+    categoryStats[currentWord.category].total++;
+
 
     if (category === currentWord.category) {
         streak++;
         score++;
         feedback.textContent = "Correct!";
+        categoryStats[currentWord.category].correct++;
         wordBox.style.color = "#5a8c60";
 
         if(streak % 3 === 0) {
             score += 2;
-            feedback.textContent += ` Combo! +2 points!`;
+            feedback.textContent += ` Combo, +2 points!`;
         }
     } else {
         streak = 0;
@@ -182,8 +190,21 @@ function updateProgress() {
     progressBar.style.width = progress + "%";
 
     if(wordsAnswered >= totalWords) {
-        feedback.textContent = `Finished! You got ${score} out of ${totalWords} words correct (${((score/totalWords)*100).toFixed(1)}%)`;
+        /*feedback.textContent = `Finished! You got ${score} out of ${totalWords} words correct (${((score/totalWords)*100).toFixed(1)}%)`;*/
         nextButton.disabled = true;
+        let percentOverall = ((score / totalWords) * 100).toFixed(1);
+        let spanishStats = `${categoryStats.Spanish.correct}/${categoryStats.Spanish.total} Spanish`;
+        let englishStats = `${categoryStats.English.correct}/${categoryStats.English.total} English`;
+        let bothStats = `${categoryStats.Both.correct}/${categoryStats.Both.total} Both`;
+        
+        feedback.innerHTML = `
+            <strong>Finished</strong><br>
+            You got ${score} out of ${totalWords} words correct (${percentOverall}%)<br><br>
+            <u>Category Stats:</u><br>
+            ${spanishStats}<br>
+            ${englishStats}<br>
+            ${bothStats}
+            `;
     }
 }
 
@@ -204,10 +225,23 @@ function restartGame() {
     score = 0;
     wordsAnswered = 0;
     answered = false;
+
+    categoryStats.Spanish.correct = 0;
+    categoryStats.Spanish.total = 0;
+    categoryStats.English.correct = 0;
+    categoryStats.English.total = 0;
+    categoryStats.Both.correct = 0;
+    categoryStats.Both.total = 0;
+
+
     scoreDisplay.textContent = `Score: 0`;
+    streakDisplay.textContent = `Streak: 0`;
     feedback.textContent = "";
     progressBar.style.width = "0%";
     nextButton.disabled = true;
+    timerDisplay.textContent = " ";
+    clearInterval(timer);
+
     pickWord();
 }
 restartButton.addEventListener("click", restartGame);
