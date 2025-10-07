@@ -85,7 +85,7 @@ h2 {
 }
 
 .game-page {
-    background-color: white;
+    background-color: #f0d9d7;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,7 +97,7 @@ h2 {
     width: 90%;
     height: 90%;
     margin: 0;
-    background-color: white;
+    background-color: #f0d9d7;
     padding: 50px;
     border-radius: 10px;
     flex-direction: column;
@@ -166,7 +166,7 @@ h3 a:hover {
 #progress-container {
     width: 80%;
     height: 20px;
-    background-color: #eee;
+    background-color: #ffffff;
     border-radius: 10px;
     margin: 20px 0;
     overflow: hidden;
@@ -194,6 +194,10 @@ h3 a:hover {
 #restart:hover {
     transform: scale(1.1);
     background-color: #943a30;
+}
+
+#highScore {
+    color: black;
 }
 
 .new-highscore {
