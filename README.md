@@ -1,10 +1,13 @@
-Spanish or English? is a fun, fast-paced word game where players decide whether a word belongs to Spanish, English, or both.
-Test your language intuition, race against the timer, and aim for the highest score possible!
-How to Play
--A random word appears on the screen.
--Choose if it’s Spanish, English, or Both.
--Earn points for every correct answer!
--Keep your streaks going for bonus combo points.
--Watch the timer—run out of time and you lose your streak.
--After 20 words, see your category stats and total accuracy.
--Try to beat your high score each round!
+**Spanish or English?** is a fun and fast-paced word game where you decide whether each word is **Spanish**, **English**, or **Both**!  
+Test your brain, race against the timer, and try to beat your high score while learning some new vocabulary along the way!
+
+---
+
+## 🧠 How to Play
+1. A random word appears on the screen.  
+2. Click **Spanish**, **English**, or **Both** to guess the category.  
+3. Earn points for every correct answer.  
+4. Keep your **streak** going for extra combo points.  
+5. Watch the **timer**—if it hits zero, you lose your streak!  
+6. At the end, see how well you did in each category.  
+7. Try to beat your **high score** next round!
