@@ -10,3 +10,4 @@ Test your brain, race against the timer, and try to beat your high score while l
 5. Watch the **timer**, if it hits zero, you lose your streak!  
 6. At the end, see how well you did in each category.  
 7. Try to beat your **high score** next round!
+   [![Athena Award Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Faward.athena.hackclub.com%2Fapi%2Fbadge)](https://award.athena.hackclub.com?utm_source=readme)
